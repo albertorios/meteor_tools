@@ -14,7 +14,9 @@ wget https://raw.githubusercontent.com/albertorios/meteor_tools/master/owners
 mv owners private/owners
 mv db_template server/db_template
 chmod 755 create_survey_db.sh
-meteor add iron:router semantic:ui flemay:less-autoprefixer fourseven:scss okgrow:router-autoscroll
+meteor add iron:router semantic:ui flemay:less-autoprefixer fourseven:scss
+meteor remove autopublish insecure
+okgrow:router-autoscroll
 python setup.py
 atom ./
 meteor
