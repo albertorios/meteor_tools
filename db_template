@@ -18,17 +18,19 @@ Meteor.methods({
   }
 });
 Meteor.publish("surveyname_db", function () {
-  var owners = JSON.parse(Assets.getText('surveyname/owners.json'))['owners'];
-  var u_email = Meteor.users.findOne({_id: this.userId})['emails'][0].address;
-  var found = false;
   var db_data = {};
-  for(i=0;i<owners.length;i++){
-    if(owners[i] == u_email){
-      found =true;
+  if(this.userId){
+    var owners = JSON.parse(Assets.getText('surveyname/owners.json'))['owners'];
+    var u_email = Meteor.users.findOne({_id: this.userId})['emails'][0].address;
+    var found = false;
+    for(i=0;i<owners.length;i++){
+      if(owners[i] == u_email){
+        found =true;
+        }
     }
-  }
-  if(found){
-    db_data = SURVEYNAME_DB.find();
+    if(found){
+      db_data = SURVEYNAME_DB.find();
+    }
   }
   return db_data
 });
