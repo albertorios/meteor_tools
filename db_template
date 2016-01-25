@@ -18,7 +18,6 @@ Meteor.methods({
   }
 });
 Meteor.publish("surveyname_db", function () {
-  var db_data = {};
   if(this.userId){
     var owners = JSON.parse(Assets.getText('surveyname/owners.json'))['owners'];
     var u_email = Meteor.users.findOne({_id: this.userId})['emails'][0].address;
@@ -29,8 +28,8 @@ Meteor.publish("surveyname_db", function () {
         }
     }
     if(found){
-      db_data = SURVEYNAME_DB.find();
+      return SURVEYNAME_DB.find();
     }
   }
-  return db_data
+  return null
 });
