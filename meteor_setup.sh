@@ -19,6 +19,7 @@ mv owners private/owners
 mv db_template server/db_template
 chmod 755 create_survey_db.sh
 meteor add iron:router semantic:ui flemay:less-autoprefixer fourseven:scss  accounts-password accounts-ui okgrow:router-autoscroll session
+meteor npm install --save bcrypt
 meteor remove autopublish insecure
 python setup.py
 atom ./
